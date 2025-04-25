@@ -2,11 +2,105 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>電子公告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Code Inc.</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      background-image: radial-gradient(circle at top left, #1f1f1f, #0a0a0a);
+    }
+    header {
+      padding: 60px 30px;
+      text-align: center;
+      background: linear-gradient(90deg, #00ffff 0%, #ff00ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+      color: #00ffff;
+    }
+    .work-item {
+      margin-bottom: 30px;
+    }
+    .work-item img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border: 2px solid #222;
+    }
+    .work-item p {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .video-section iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>電子公告</h1>
-  <p>株式会社Sweet Codeの電子公告は本ページにて掲載いたします。</p>
-  <p>（現在、掲載すべき公告はございません。）</p>
+  <header>
+    Sweet Code Inc.
+  </header>
+
+  <section>
+    <h2>公司简介</h2>
+    <p>
+      我们致力于影视制作，融合AI等前沿科技，打造引领未来的视觉内容。
+    </p>
+  </section>
+
+  <section>
+    <h2>作品展示</h2>
+    <div class="work-item">
+      <img src="https://via.placeholder.com/800x300?text=Project+1" alt="作品1">
+      <p>项目一：未来都市题材短剧，使用AI特效渲染与虚拟摄影棚拍摄。</p>
+    </div>
+    <div class="work-item">
+      <img src="https://via.placeholder.com/800x300?text=Project+2" alt="作品2">
+      <p>项目二：纪录片《意识的边界》，结合自然影像与AI生成画面。</p>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <h2>视频展示</h2>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+  </section>
+
+  <section>
+    <h2>联系方式</h2>
+    <p>邮箱：<a href="mailto:contact@sweetcode.jp">contact@sweetcode.jp</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Sweet Code Inc. All rights reserved.
+  </footer>
 </body>
 </html>
