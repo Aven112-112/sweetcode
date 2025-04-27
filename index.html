@@ -1,106 +1,734 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sweet Code Inc. - プロジェクト紹介</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background-color: #0d0d0d; color: white; font-family: 'Segoe UI', sans-serif; }
-    nav { background: #000; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-    nav .logo { font-size: 1.2rem; color: #fff; }
-    nav .menu a { color: #fff; margin-left: 20px; text-decoration: none; font-size: 0.95rem; }
-    .hero { text-align: center; padding: 100px 20px 20px; }
-    .hero h1 { font-size: 3rem; }
-    .hero p { font-size: 1.2rem; color: #999; }
-    .highlight { color: red; }
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1200px; margin: auto; }
-    .project { position: relative; overflow: hidden; }
-    .project img { width: 100%; height: 200px; object-fit: cover; display: block; }
-    .project .text { position: absolute; bottom: 20px; left: 20px; }
-    .project .text h3 { font-size: 1.1rem; }
-    .project .text a { font-size: 0.9rem; color: #ccc; text-decoration: none; }
-    footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #888; border-top: 1px solid #222; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major. Production Company</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0f1620;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .header.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu-icon {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-icon span {
+            width: 100%;
+            height: 3px;
+            background-color: #ff3030;
+        }
+
+        .social-icons {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%) translateX(50px);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .social-icons.show {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .social-icons.show a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .social-icons.show a:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .social-icons.show a:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .social-icons.show a:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.show a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        .main-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            background-image: url('assets/back.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .main-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: rgba(26, 37, 48, 0.7); */
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        h1.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 .company-name {
+            color: #ff3030;
+            text-shadow: 0 0 10px rgba(255, 48, 48, 0.8), 0 0 20px rgba(255, 48, 48, 0.4);
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+            transition-delay: 0.3s;
+        }
+
+        h1.show .company-name {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .paragraph {
+            font-size: 24px;
+            max-width: 700px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+            transition-delay: 0.5s;
+        }
+
+        .paragraph.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .navigation {
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 10%;
+            background-color: #000;
+            z-index: 10;
+        }
+
+        .nav-item {
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .nav-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-item:nth-child(1).show {
+            transition-delay: 0.3s;
+        }
+
+        .nav-item:nth-child(2).show {
+            transition-delay: 0.5s;
+        }
+
+        .nav-item:nth-child(3).show {
+            transition-delay: 0.7s;
+        }
+
+        .nav-item:nth-child(4).show {
+            transition-delay: 0.9s;
+        }
+
+        .nav-number {
+            font-size: 64px;
+            font-weight: bold;
+        }
+
+        .nav-title {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            background-color: #000;
+            bottom: 10px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        /* 全屏菜单样式 */
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .menu-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #ff3030;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .menu-links a {
+            color: white;
+            font-size: 40px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease;
+        }
+        
+        .fullscreen-menu.active .menu-links a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        
+        .menu-links a:hover {
+            color: #ff3030;
+        }
+        
+        .menu-links a.active {
+            color: #ff3030;
+        }
+        
+        .news {
+            background-color: #0f1620;
+            padding: 80px 20px;
+            overflow: hidden;
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .news-header {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+            animation-play-state: paused;
+        }
+        
+        .news-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .news-highlight {
+            color: #ff3030;
+        }
+        
+        .news-subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .news-item {
+            background-color: #1a212d;
+            border-radius: 8px;
+            padding: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+            animation-play-state: paused;
+            overflow: hidden;
+        }
+        
+        .news-item:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+        
+        .news-item:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .news-item:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .news-date {
+            color: #ff3030;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .news-item-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .news-item-content {
+            color: #a0a0a0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .news-item-link {
+            color: #ff3030;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .news-item-link:hover {
+            color: #ff6060;
+        }
+        
+        .news-item-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .news-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-item:hover .news-item-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-item-content-wrapper {
+            padding: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news {
+                padding: 60px 20px;
+            }
+            
+            .news-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式样式 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .paragraph {
+                font-size: 18px;
+            }
+            
+            .navigation {
+                flex-wrap: wrap;
+            }
+            
+            .nav-item {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+            
+            .nav-number {
+                font-size: 48px;
+            }
+            
+            .social-icons {
+                right: 10px;
+            }
+            
+            .menu-links a {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+            
+            .paragraph {
+                font-size: 16px;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-number {
+                font-size: 40px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .menu-links a {
+                font-size: 24px;
+                gap: 20px;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <nav>
-    <div class="logo">Sweet Code Inc.</div>
-    <div class="menu">
-      <a href="#">会社紹介</a>
-      <a href="#">作品紹介</a>
-      <a href="#">お問い合わせ</a>
-    </div>
-  </nav>
-  <div class="hero">
-    <h1><span class="highlight">プロジェクト</span>を見る</h1>
-    <p>最新の作品をご覧ください。</p>
-  </div>
-  <div class="projects">
-    
-    <div class="project">
-      <a href="project1.html">
-        <img src="https://images.unsplash.com/photo-1617914603630-fffe180ba35c?auto=format&fit=crop&w=800&q=80" alt="プロジェクト1">
-        <div class="text">
-          <h3>プロジェクト 1</h3>
-          <a href="project1.html">VIEW &gt;</a>
+    <div class="header">
+        <div class="logo">Major.</div>
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-      </a>
     </div>
 
-    <div class="project">
-      <a href="project2.html">
-        <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=800&q=80" alt="プロジェクト2">
-        <div class="text">
-          <h3>プロジェクト 2</h3>
-          <a href="project2.html">VIEW &gt;</a>
-        </div>
-      </a>
+    <div class="social-icons">
+        <a href="#" title="Vimeo">ⓥ</a>
+        <a href="#" title="Facebook">ⓕ</a>
+        <a href="#" title="YouTube">▶</a>
+        <a href="#" title="Instagram">◯</a>
     </div>
 
-    <div class="project">
-      <a href="project3.html">
-        <img src="https://images.unsplash.com/photo-1581090700227-1e8eab81147e?auto=format&fit=crop&w=800&q=80" alt="プロジェクト3">
-        <div class="text">
-          <h3>プロジェクト 3</h3>
-          <a href="project3.html">VIEW &gt;</a>
+    <div class="main-content">
+        <div class="content-wrapper">
+            <h1>Major. <span class="company-name">Production Company.</span></h1>
+            <p class="paragraph">I'm a paragraph. Click here to add your own text and edit me. Let your users get to
+                know you.</p>
         </div>
-      </a>
+    </div>
+    <div class="news">
+        <div class="news-container">
+            <div class="news-header">
+                <h2 class="news-title">Latest <span class="news-highlight">News</span></h2>
+                <p class="news-subtitle">Stay updated with our latest projects, announcements, and industry achievements</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-item">
+                    <div class="news-item-image">
+                        <img src="assets/project.jpg" alt="New Project Announcement">
+                    </div>
+                    <div class="news-item-content-wrapper">
+                        <div class="news-date">01 OCT 2023</div>
+                        <h3 class="news-item-title">New Project Announcement</h3>
+                        <p class="news-item-content">We're excited to announce our upcoming major production scheduled for early 2024. This innovative project will showcase groundbreaking techniques and storytelling.</p>
+                        <a href="#" class="news-item-link">READ MORE →</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-item-image">
+                        <img src="assets/project.jpg" alt="Award Winning Production">
+                    </div>
+                    <div class="news-item-content-wrapper">
+                        <div class="news-date">15 SEP 2023</div>
+                        <h3 class="news-item-title">Award Winning Production</h3>
+                        <p class="news-item-content">Our recent production has received multiple industry awards for outstanding direction, cinematography, and visual effects. We're honored by this recognition.</p>
+                        <a href="#" class="news-item-link">READ MORE →</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-item-image">
+                        <img src="assets/project.jpg" alt="New Team Members">
+                    </div>
+                    <div class="news-item-content-wrapper">
+                        <div class="news-date">28 AUG 2023</div>
+                        <h3 class="news-item-title">New Team Members</h3>
+                        <p class="news-item-content">We're pleased to welcome several talented professionals to our production team. Their expertise and creative vision will enhance our upcoming projects.</p>
+                        <a href="#" class="news-item-link">READ MORE →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="navigation">
+        <div class="nav-item" onclick="location.href='our-projects.html'">
+            <div class="nav-number">01</div>
+            <div class="nav-title">All Projects</div>
+        </div>
+        <div class="nav-item" onclick="location.href='talent.html'">
+            <div class="nav-number">02</div>
+            <div class="nav-title">Talent</div>
+        </div>
+        <div class="nav-item" onclick="location.href='about-us.html'">
+            <div class="nav-number">03</div>
+            <div class="nav-title">About Us</div>
+        </div>
+        <div class="nav-item" onclick="location.href='contact-us.html'">
+            <div class="nav-number">04</div>
+            <div class="nav-title">Contact Info</div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2035 by Major. Powered and secured by <a href="#">Wix</a></p>
     </div>
 
-    <div class="project">
-      <a href="project4.html">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="プロジェクト4">
-        <div class="text">
-          <h3>プロジェクト 4</h3>
-          <a href="project4.html">VIEW &gt;</a>
+    <!-- 全屏菜单 -->
+    <div class="fullscreen-menu">
+        <div class="menu-close">×</div>
+        <div class="menu-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="our-projects.html">Our Projects</a>
+            <a href="talent.html">Talent</a>
+            <a href="about-us.html">About Us</a>
+            <a href="contact-us.html">Contact Us</a>
         </div>
-      </a>
     </div>
 
-    <div class="project">
-      <a href="project5.html">
-        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="プロジェクト5">
-        <div class="text">
-          <h3>プロジェクト 5</h3>
-          <a href="project5.html">VIEW &gt;</a>
-        </div>
-      </a>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 定义要添加动画的元素
+            const header = document.querySelector('.header');
+            const socialIcons = document.querySelector('.social-icons');
+            const heading = document.querySelector('h1');
+            const paragraph = document.querySelector('.paragraph');
+            const navItems = document.querySelectorAll('.nav-item');
+            const footer = document.querySelector('.footer');
+            
+            // 页面加载后延迟显示元素
+            setTimeout(function () {
+                header.classList.add('show');
+            }, 300);
 
-    <div class="project">
-      <a href="project6.html">
-        <img src="https://images.unsplash.com/photo-1618500243042-d385a1e9bde4?auto=format&fit=crop&w=800&q=80" alt="プロジェクト6">
-        <div class="text">
-          <h3>プロジェクト 6</h3>
-          <a href="project6.html">VIEW &gt;</a>
-        </div>
-      </a>
-    </div>
+            setTimeout(function () {
+                socialIcons.classList.add('show');
+            }, 600);
 
-  </div>
-  <footer>
-    © 2025 Sweet Code Inc. All rights reserved.
-  </footer>
+            setTimeout(function () {
+                heading.classList.add('show');
+            }, 800);
+
+            setTimeout(function () {
+                paragraph.classList.add('show');
+            }, 1000);
+
+            navItems.forEach(function (item, index) {
+                setTimeout(function () {
+                    item.classList.add('show');
+                }, 1200 + (index * 200));
+            });
+
+            // 全屏菜单逻辑
+            const menuIcon = document.querySelector('.menu-icon');
+            const menuClose = document.querySelector('.menu-close');
+            const fullscreenMenu = document.querySelector('.fullscreen-menu');
+            
+            menuIcon.addEventListener('click', function() {
+                fullscreenMenu.classList.add('active');
+            });
+            
+            menuClose.addEventListener('click', function() {
+                fullscreenMenu.classList.remove('active');
+            });
+
+            // 监听滚动事件，添加额外的动画效果
+            window.addEventListener('scroll', function () {
+                const scrollY = window.scrollY;
+
+                // 当页面滚动时，可以添加额外的动画效果
+                if (scrollY > 100) {
+                    // 滚动超过100px时的效果
+                }
+            });
+            
+            // 使用 IntersectionObserver 监视新闻部分的可见性
+            const newsSection = document.querySelector('.news');
+            const newsHeader = document.querySelector('.news-header');
+            const newsItems = document.querySelectorAll('.news-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 如果页面已经加载完毕直接显示新闻项
+                        if (entry.target === newsSection) {
+                            // 确保有足够的延迟，让新闻项依次出现
+                            newsHeader.style.animationPlayState = 'running';
+                            newsItems.forEach((item, index) => {
+                                item.style.animationPlayState = 'running';
+                            });
+                        }
+                        // 一旦元素出现在视口中，不再观察它
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 }); // 当目标元素10%可见时触发
+            
+            // 开始观察新闻部分
+            observer.observe(newsSection);
+        });
+    </script>
 </body>
+
 </html>

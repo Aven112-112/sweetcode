@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Major. Production Company</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .menu-icon {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .menu-icon span {
+            width: 100%;
+            height: 3px;
+            background-color: #ff3030;
+        }
+        
+        /* 全屏菜单样式 */
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .menu-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #ff3030;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .menu-links a {
+            color: white;
+            font-size: 40px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease;
+        }
+        
+        .fullscreen-menu.active .menu-links a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        
+        .fullscreen-menu.active .menu-links a:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        
+        .menu-links a:hover {
+            color: #ff3030;
+        }
+        
+        .menu-links a.active {
+            color: #ff3030;
+        }
+        
+        .main-content {
+            min-height: 100vh;
+            padding: 120px 0 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .about-section {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 30px;
+            margin-bottom: 100px;
+        }
+        
+        .about-number {
+            font-size: 120px;
+            font-weight: bold;
+            position: relative;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-number::before,
+        .about-number::after {
+            content: "";
+            height: 2px;
+            width: 100px;
+            background-color: white;
+            display: block;
+        }
+        
+        .about-number::before {
+            margin-right: 20px;
+        }
+        
+        .about-number::after {
+            margin-left: 20px;
+        }
+        
+        .about-title {
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .about-title .highlight {
+            color: #ff3030;
+        }
+        
+        .about-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        
+        .link-section {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 30px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .link-text {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .link-arrow {
+            color: #ff3030;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        
+        .clients-section {
+            width: 100%;
+            max-width: 1200px;
+            padding: 60px 30px;
+            margin-top: 60px;
+        }
+        
+        .clients-title {
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .clients-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
+            max-width: 800px;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .client-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+        
+        .client-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(3);
+        }
+        
+        .footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            background-color: #000;
+            margin-top: 60px;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+        
+        /* 响应式样式 */
+        @media (max-width: 768px) {
+            .about-number {
+                font-size: 80px;
+                margin-bottom: 30px;
+            }
+            
+            .about-number::before,
+            .about-number::after {
+                width: 60px;
+            }
+            
+            .about-title {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+            
+            .about-text {
+                font-size: 15px;
+                padding: 0 20px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .clients-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-number {
+                font-size: 60px;
+            }
+            
+            .about-number::before,
+            .about-number::after {
+                width: 40px;
+            }
+            
+            .about-title {
+                font-size: 28px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .menu-links a {
+                font-size: 24px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .about-section,
+            .clients-section {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><a href="index.html">Major.</a></div>
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
+    <!-- 全屏菜单 -->
+    <div class="fullscreen-menu">
+        <div class="menu-close">×</div>
+        <div class="menu-links">
+            <a href="index.html">Home</a>
+            <a href="our-projects.html">Our Projects</a>
+            <a href="talent.html">Talent</a>
+            <a href="about-us.html" class="active">About Us</a>
+            <a href="contact-us.html">Contact Us</a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="about-section">
+            <div class="about-number">03</div>
+            <h1 class="about-title">About <span class="highlight">Major.</span></h1>
+            <p class="about-text">I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click "Edit Text" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.</p>
+            <p class="about-text">This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.</p>
+        </div>
+        
+        <div class="link-section">
+            <a href="talent.html" class="link-text">
+                VIEW OUR CREATIVE TALENT
+                <span class="link-arrow">→</span>
+            </a>
+        </div>
+        
+        <div class="clients-section">
+            <h2 class="clients-title">Our Clients</h2>
+            <p class="clients-text">I'm a paragraph. Click here to add your own text and edit me. It's easy.</p>
+            
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <img src="assets/f1.png" alt="Client 1">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/f1.png" alt="Client 2">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/f1.png" alt="Client 3">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/f1.png" alt="Client 4">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/f1.png" alt="Client 5">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/f1.png" alt="Client 6">
+                </div>
+            </div>
+        </div>
+        
+        <div class="link-section">
+            <a href="contact-us.html" class="link-text">
+                CONTACT US
+                <span class="link-arrow">→</span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2035 by Major. Powered and secured by <a href="#">Wix</a></p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 全屏菜单逻辑
+            const menuIcon = document.querySelector('.menu-icon');
+            const menuClose = document.querySelector('.menu-close');
+            const fullscreenMenu = document.querySelector('.fullscreen-menu');
+            
+            menuIcon.addEventListener('click', function() {
+                fullscreenMenu.classList.add('active');
+            });
+            
+            menuClose.addEventListener('click', function() {
+                fullscreenMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
