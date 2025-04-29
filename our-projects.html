@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +12,13 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        
+
         body {
             background-color: #000;
             color: white;
             overflow-x: hidden;
         }
-        
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -27,17 +28,17 @@
             z-index: 100;
             top: 0;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         .logo a {
             color: white;
             text-decoration: none;
         }
-        
+
         .menu-icon {
             width: 30px;
             height: 20px;
@@ -47,13 +48,13 @@
             cursor: pointer;
             z-index: 1000;
         }
-        
+
         .menu-icon span {
             width: 100%;
             height: 3px;
             background-color: #ff3030;
         }
-        
+
         /* 全屏菜单样式 */
         .fullscreen-menu {
             position: fixed;
@@ -71,12 +72,12 @@
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        
+
         .fullscreen-menu.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .menu-close {
             position: absolute;
             top: 30px;
@@ -85,14 +86,14 @@
             font-size: 40px;
             cursor: pointer;
         }
-        
+
         .menu-links {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
         }
-        
+
         .menu-links a {
             color: white;
             font-size: 40px;
@@ -102,40 +103,40 @@
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease;
         }
-        
+
         .fullscreen-menu.active .menu-links a {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(1) {
             transition-delay: 0.1s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(2) {
             transition-delay: 0.2s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(3) {
             transition-delay: 0.3s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(4) {
             transition-delay: 0.4s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(5) {
             transition-delay: 0.5s;
         }
-        
+
         .menu-links a:hover {
             color: #ff3030;
         }
-        
+
         .menu-links a.active {
             color: #ff3030;
         }
-        
+
         .main-content {
             min-height: 100vh;
             padding: 120px 0 50px;
@@ -143,7 +144,7 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         .project-number {
             font-size: 120px;
             font-weight: bold;
@@ -152,7 +153,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .project-number::before,
         .project-number::after {
             content: "";
@@ -161,15 +162,15 @@
             background-color: white;
             display: block;
         }
-        
+
         .project-number::before {
             margin-right: 20px;
         }
-        
+
         .project-number::after {
             margin-left: 20px;
         }
-        
+
         .project-title {
             font-size: 40px;
             margin-bottom: 60px;
@@ -177,54 +178,54 @@
             max-width: 800px;
             padding: 0 20px;
         }
-        
+
         .project-title .highlight {
             color: #ff3030;
         }
-        
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             width: 100%;
         }
-        
+
         .project-item {
             position: relative;
             height: 350px;
             overflow: hidden;
         }
-        
+
         .project-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .project-item:hover img {
             transform: scale(1.05);
         }
-        
+
         .project-info {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             padding: 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
         }
-        
+
         .project-name {
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 5px;
         }
-        
+
         .project-id {
             font-size: 20px;
             margin-bottom: 5px;
         }
-        
+
         .view-link {
             color: white;
             text-decoration: none;
@@ -232,11 +233,11 @@
             opacity: 0.7;
             transition: opacity 0.3s;
         }
-        
+
         .view-link:hover {
             opacity: 1;
         }
-        
+
         .footer {
             padding: 20px;
             text-align: center;
@@ -244,12 +245,12 @@
             color: rgba(255, 255, 255, 0.6);
             background-color: #000;
         }
-        
+
         .footer a {
             color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
         }
-        
+
         /* 项目详情模态框样式 */
         .project-modal {
             position: fixed;
@@ -264,12 +265,12 @@
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        
+
         .project-modal.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .project-modal-close {
             position: absolute;
             top: 30px;
@@ -279,25 +280,25 @@
             cursor: pointer;
             z-index: 1001;
         }
-        
+
         .project-modal-content {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             padding: 100px 30px 50px;
         }
-        
+
         .project-info-header {
             margin-bottom: 50px;
             padding: 0 30px;
         }
-        
+
         .project-modal-title {
             font-size: 60px;
             font-weight: bold;
             margin-bottom: 10px;
         }
-        
+
         .project-modal-subtitle {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
@@ -305,7 +306,7 @@
             letter-spacing: 2px;
             margin-bottom: 30px;
         }
-        
+
         .project-modal-description {
             font-size: 16px;
             line-height: 1.6;
@@ -313,20 +314,20 @@
             max-width: 700px;
             margin-bottom: 30px;
         }
-        
+
         .project-image-container {
             width: 100%;
             height: 100vh;
             position: relative;
             overflow: hidden;
         }
-        
+
         .project-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .project-overlay-content {
             position: absolute;
             top: 50%;
@@ -335,13 +336,13 @@
             text-align: center;
             z-index: 2;
         }
-        
+
         .project-overlay-title {
             font-size: 40px;
             font-weight: bold;
             margin-bottom: 20px;
         }
-        
+
         .play-video-btn {
             display: flex;
             align-items: center;
@@ -354,19 +355,19 @@
             cursor: pointer;
             margin: 0 auto;
         }
-        
+
         .play-video-btn svg {
             fill: white;
             width: 24px;
             height: 24px;
         }
-        
+
         .play-video-text {
             color: white;
             margin-top: 10px;
             font-size: 14px;
         }
-        
+
         /* 视频播放模态框样式 */
         .video-modal {
             position: fixed;
@@ -381,12 +382,12 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        
+
         .video-modal.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .video-modal-close {
             position: absolute;
             top: 20px;
@@ -396,20 +397,20 @@
             cursor: pointer;
             z-index: 1101;
         }
-        
+
         .video-container {
             flex: 3;
             height: 100%;
             position: relative;
             background-color: #000;
         }
-        
+
         .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .video-info {
             flex: 1;
             padding: 40px;
@@ -417,25 +418,25 @@
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .video-title {
             font-size: 36px;
             font-weight: bold;
             margin-bottom: 10px;
         }
-        
+
         .video-timer {
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 30px;
         }
-        
+
         .video-description {
             font-size: 14px;
             line-height: 1.6;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
         }
-        
+
         .video-overlay {
             position: absolute;
             top: 0;
@@ -448,21 +449,21 @@
             align-items: center;
             pointer-events: none;
         }
-        
+
         .video-overlay-location {
             font-size: 24px;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
-        
+
         .video-overlay-title {
             font-size: 80px;
             font-weight: bold;
             font-style: italic;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
-        
+
         .video-share-btn {
             position: absolute;
             top: 20px;
@@ -473,152 +474,153 @@
             font-size: 14px;
             cursor: pointer;
         }
-        
+
         .video-share-btn svg {
             margin-right: 8px;
             width: 16px;
             height: 16px;
         }
-        
+
         @media (max-width: 1024px) {
             .video-modal {
                 flex-direction: column;
             }
-            
+
             .video-container {
                 height: 60%;
             }
-            
+
             .video-info {
                 height: 40%;
                 padding: 20px;
             }
-            
+
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (max-width: 768px) {
             .project-number {
                 font-size: 80px;
                 margin-bottom: 30px;
             }
-            
+
             .project-number::before,
             .project-number::after {
                 width: 50px;
             }
-            
+
             .project-title {
                 font-size: 28px;
                 margin-bottom: 40px;
             }
-            
+
             .project-item {
                 height: 250px;
             }
-            
+
             .project-name {
                 font-size: 22px;
             }
-            
+
             .project-id {
                 font-size: 18px;
             }
-            
+
             .project-modal-title {
                 font-size: 40px;
             }
-            
+
             .video-overlay-title {
                 font-size: 50px;
             }
-            
+
             .menu-links a {
                 font-size: 30px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .project-number {
                 font-size: 60px;
             }
-            
+
             .project-number::before,
             .project-number::after {
                 width: 30px;
             }
-            
+
             .project-title {
                 font-size: 24px;
                 margin-bottom: 30px;
             }
-            
+
             .project-item {
                 height: 220px;
             }
-            
+
             .project-modal-title {
                 font-size: 32px;
             }
-            
+
             .project-overlay-title {
                 font-size: 36px;
             }
-            
+
             .header {
                 padding: 20px;
             }
-            
+
             .logo {
                 font-size: 20px;
             }
-            
+
             .menu-links a {
                 font-size: 24px;
                 gap: 20px;
             }
-            
+
             .project-modal-content {
                 padding: 80px 20px 40px;
             }
-            
+
             .project-info-header {
                 padding: 0;
                 margin-bottom: 30px;
             }
-            
+
             .video-modal-close {
                 top: 10px;
                 right: 10px;
             }
-            
+
             .video-share-btn {
                 top: 10px;
                 left: 10px;
             }
-            
+
             .video-overlay-location {
                 font-size: 16px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <div class="logo"><a href="index.html">SWEET CODE.Inc</CODE></a></div>
+        <div class="logo"><a href="index.html">SWEET CODE,Inc.</CODE></a></div>
         <div class="menu-icon">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
-    
+
     <!-- 全屏菜单 -->
     <div class="fullscreen-menu">
         <div class="menu-close">×</div>
@@ -630,7 +632,7 @@
             <a href="contact-us.html">Contact Us</a>
         </div>
     </div>
-    
+
     <!-- 项目详情模态框 -->
     <div class="project-modal" id="project-modal">
         <div class="project-modal-close">×</div>
@@ -638,16 +640,19 @@
             <div class="project-info-header">
                 <h2 class="project-modal-title">Project 02</h2>
                 <p class="project-modal-subtitle">Director / Max Reinert</p>
-                <p class="project-modal-description">I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click "Edit Text" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.</p>
+                <p class="project-modal-description">1111111I'm a paragraph. Click here to add your own text and edit me. It's
+                    easy. Just click "Edit Text" or double click me to add your own content and make changes to the
+                    font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to
+                    tell a story and let your users know a little more about you.</p>
             </div>
-            
+
             <div class="project-image-container">
-                <img src="assets/project2.jpg" alt="Project 02" id="modal-project-image">
+                <img src="./assets/project1.png" alt="Project 01" id="modal-project-image">
                 <div class="project-overlay-content">
-                    <h3 class="project-overlay-title">Project 02</h3>
+                    <h3 class="project-overlay-title">Project 01</h3>
                     <div class="play-video-btn">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 5V19L19 12L8 5Z" fill="white"/>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="https://youtu.be/8DVZDhRs-jU">
+                            <path d="M8 5V19L19 12L8 5Z" fill="white" />
                         </svg>
                     </div>
                     <p class="play-video-text">Play Video</p>
@@ -655,73 +660,88 @@
             </div>
         </div>
     </div>
-    
+
     <!-- 视频播放模态框 -->
     <div class="video-modal" id="video-modal">
         <div class="video-modal-close">×</div>
         <div class="video-share-btn">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 5.12548 15.0077 5.24917 15.0227 5.37069L8.08261 9.12159C7.54308 8.43452 6.7862 8 5.93375 8C4.32616 8 3 9.34315 3 11C3 12.6569 4.32616 14 5.93375 14C6.86993 14 7.70173 13.4882 8.22121 12.7123L14.8312 16.3851C14.7852 16.5822 14.7606 16.7872 14.7606 17C14.7606 18.6569 16.0868 20 17.6944 20C19.302 20 20.6281 18.6569 20.6281 17C20.6281 15.3431 19.302 14 17.6944 14C16.8247 14 16.0457 14.4132 15.5483 15.0679L8.96728 11.4172C9.00399 11.2812 9.02286 11.1414 9.02286 11C9.02286 10.791 8.98379 10.5891 8.91263 10.3988L15.8182 6.66608C16.3547 7.45192 17.1334 8 18 8Z" fill="white"/>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="https://youtu.be/8DVZDhRs-jU">
+                <path
+                    d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 5.12548 15.0077 5.24917 15.0227 5.37069L8.08261 9.12159C7.54308 8.43452 6.7862 8 5.93375 8C4.32616 8 3 9.34315 3 11C3 12.6569 4.32616 14 5.93375 14C6.86993 14 7.70173 13.4882 8.22121 12.7123L14.8312 16.3851C14.7852 16.5822 14.7606 16.7872 14.7606 17C14.7606 18.6569 16.0868 20 17.6944 20C19.302 20 20.6281 18.6569 20.6281 17C20.6281 15.3431 19.302 14 17.6944 14C16.8247 14 16.0457 14.4132 15.5483 15.0679L8.96728 11.4172C9.00399 11.2812 9.02286 11.1414 9.02286 11C9.02286 10.791 8.98379 10.5891 8.91263 10.3988L15.8182 6.66608C16.3547 7.45192 17.1334 8 18 8Z"
+                    fill="white" />
             </svg>
             Share
         </div>
-        
+
         <div class="video-container">
-            <video id="project-video" controls>
+           <!--deo id="project-video" controls>
                 <source src="" type="video/mp4">
                 您的浏览器不支持视频播放。
-            </video>
+            </video>-->
+            <iframe width="100%" height="315"
+  src="https://www.youtube.com/embed/8DVZDhRs-jU"
+  title="YouTube video player"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
             <div class="video-overlay">
                 <div class="video-overlay-location">CALIFORNIA</div>
                 <div class="video-overlay-title">Dreaming</div>
             </div>
         </div>
-        
+
+
+
         <div class="video-info">
             <h2 class="video-title">Project 02</h2>
             <div class="video-timer">00:31</div>
-            <p class="video-description">This is a great space to update your audience with a description of your video. Include information like what the video is about, who produced it, where it was filmed, and why it's a must-see for viewers. Remember this is a showcase for your professional work, so be sure to use intriguing language that engages viewers and invites them to sit back and enjoy.</p>
+            <p class="video-description">This is a great space to update your audience with a description of your video.
+                Include information like what the video is about, who produced it, where it was filmed, and why it's a
+                must-see for viewers. Remember this is a showcase for your professional work, so be sure to use
+                intriguing language that engages viewers and invites them to sit back and enjoy.</p>
         </div>
     </div>
-    
+
     <div class="main-content">
         <div class="project-number">01</div>
         <h1 class="project-title">Sweet Codeの <span class="highlight">映像作品アーカイブ</span> <br>
             未来を創る、映像の力。</h1>
-        
+
         <div class="projects-grid">
             <div class="project-item">
-                <img src="assets/project.jpg" alt="Project 01">
+                <img src="./assets/project1.png" alt="モバイルゲームWebCM">
                 <div class="project-info">
-                    <div class="project-name">Project</div>
-                    <div class="project-id">01</div>
+                    <div class="project-name">モバイルゲームWebCM</div>
+                    <div class="project-id">SNS向け宣伝動画</div>
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
             <div class="project-item">
-                <img src="assets/project.jpg" alt="Project 02">
+                <img src="./assets/project2.png" alt="モバイルゲームWebCM">
                 <div class="project-info">
-                    <div class="project-name">Project</div>
-                    <div class="project-id">02</div>
+                    <div class="project-name">モバイルゲームWebCM</div>
+                    <div class="project-id">SNS向け宣伝動画</div>
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
             <div class="project-item">
-                <img src="assets/project.jpg" alt="Project 03">
+                <img src="./assets/project3.png" alt="短編映画「エマージェンス」">
                 <div class="project-info">
-                    <div class="project-name">Project</div>
+                    <div class="project-name">短編映画「エマージェンス」</div>
                     <div class="project-id">03</div>
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
             <div class="project-item">
-                <img src="assets/project.jpg" alt="Project 04">
+                <img src="./assets/project4.png" alt="短編映画「野分き」">
                 <div class="project-info">
-                    <div class="project-name">Project</div>
+                    <div class="project-name">短編映画「野分き」</div>
                     <div class="project-id">04</div>
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
+            <!--
             <div class="project-item">
                 <img src="assets/project.jpg" alt="Project 05">
                 <div class="project-info">
@@ -737,29 +757,29 @@
                     <div class="project-id">06</div>
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
-    
+
     <div class="footer">
-        <p>© 2035 by Major. Powered and secured by <a href="#">Wix</a></p>
+        <p>© 2025 Sweet Code, Inc. All rights reserved. <a href="#"></a></p>
     </div>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // 全屏菜单逻辑
             const menuIcon = document.querySelector('.menu-icon');
             const menuClose = document.querySelector('.menu-close');
             const fullscreenMenu = document.querySelector('.fullscreen-menu');
-            
-            menuIcon.addEventListener('click', function() {
+
+            menuIcon.addEventListener('click', function () {
                 fullscreenMenu.classList.add('active');
             });
-            
-            menuClose.addEventListener('click', function() {
+
+            menuClose.addEventListener('click', function () {
                 fullscreenMenu.classList.remove('active');
             });
-            
+
             // 项目详情模态框逻辑
             const projectItems = document.querySelectorAll('.project-item');
             const projectModal = document.getElementById('project-modal');
@@ -767,66 +787,67 @@
             const modalProjectImage = document.getElementById('modal-project-image');
             const projectModalTitle = document.querySelector('.project-modal-title');
             const projectOverlayTitle = document.querySelector('.project-overlay-title');
-            
+
             // 点击项目项打开模态框
-            projectItems.forEach(function(item, index) {
-                item.addEventListener('click', function() {
+            projectItems.forEach(function (item, index) {
+                item.addEventListener('click', function () {
                     const projectId = String(index + 1).padStart(2, '0');
-                    
+
                     // 更新模态框内容
                     projectModalTitle.textContent = `Project ${projectId}`;
                     projectOverlayTitle.textContent = `Project ${projectId}`;
-                    
+
                     // 更新图片
                     const imgSrc = item.querySelector('img').src;
                     modalProjectImage.src = imgSrc;
-                    
+
                     // 显示模态框
                     projectModal.classList.add('active');
                     document.body.style.overflow = 'hidden'; // 防止背景滚动
                 });
             });
-            
+
             // 关闭模态框
-            projectModalClose.addEventListener('click', function() {
+            projectModalClose.addEventListener('click', function () {
                 projectModal.classList.remove('active');
                 document.body.style.overflow = ''; // 恢复滚动
             });
-            
+
             // 视频播放模态框逻辑
             const playVideoBtn = document.querySelector('.play-video-btn');
             const videoModal = document.getElementById('video-modal');
             const videoModalClose = document.querySelector('.video-modal-close');
             const projectVideo = document.getElementById('project-video');
             const videoTitle = document.querySelector('.video-title');
-            
+
             // 点击播放按钮打开视频模态框
-            playVideoBtn.addEventListener('click', function(e) {
+            playVideoBtn.addEventListener('click', function (e) {
                 e.stopPropagation(); // 阻止事件冒泡
-                
+
                 // 更新视频标题
                 const currentProject = projectModalTitle.textContent;
                 videoTitle.textContent = currentProject;
-                
+
                 // 假设这里设置视频源，实际应用中应该根据项目ID获取对应视频
                 projectVideo.src = 'assets/project-video.mp4';
-                
+
                 // 显示视频模态框
                 videoModal.classList.add('active');
-                
+
                 // 播放视频
                 projectVideo.load();
                 projectVideo.play();
             });
-            
+
             // 关闭视频模态框
-            videoModalClose.addEventListener('click', function() {
+            videoModalClose.addEventListener('click', function () {
                 videoModal.classList.remove('active');
-                
+
                 // 暂停视频
                 projectVideo.pause();
             });
         });
     </script>
 </body>
+
 </html>
