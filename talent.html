@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +11,13 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        
+
         body {
             background-color: #000;
             color: white;
             overflow-x: hidden;
         }
-        
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -27,17 +27,17 @@
             z-index: 100;
             top: 0;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         .logo a {
             color: white;
             text-decoration: none;
         }
-        
+
         .menu-icon {
             width: 30px;
             height: 20px;
@@ -47,13 +47,13 @@
             cursor: pointer;
             z-index: 1000;
         }
-        
+
         .menu-icon span {
             width: 100%;
             height: 3px;
             background-color: #ff3030;
         }
-        
+
         /* 全屏菜单样式 */
         .fullscreen-menu {
             position: fixed;
@@ -71,12 +71,12 @@
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        
+
         .fullscreen-menu.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .menu-close {
             position: absolute;
             top: 30px;
@@ -85,14 +85,14 @@
             font-size: 40px;
             cursor: pointer;
         }
-        
+
         .menu-links {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
         }
-        
+
         .menu-links a {
             color: white;
             font-size: 40px;
@@ -102,40 +102,40 @@
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease;
         }
-        
+
         .fullscreen-menu.active .menu-links a {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(1) {
             transition-delay: 0.1s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(2) {
             transition-delay: 0.2s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(3) {
             transition-delay: 0.3s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(4) {
             transition-delay: 0.4s;
         }
-        
+
         .fullscreen-menu.active .menu-links a:nth-child(5) {
             transition-delay: 0.5s;
         }
-        
+
         .menu-links a:hover {
             color: #ff3030;
         }
-        
+
         .menu-links a.active {
             color: #ff3030;
         }
-        
+
         .main-content {
             min-height: 100vh;
             padding: 120px 0 50px;
@@ -143,7 +143,7 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         .talent-number {
             font-size: 120px;
             font-weight: bold;
@@ -152,7 +152,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .talent-number::before,
         .talent-number::after {
             content: "";
@@ -161,15 +161,15 @@
             background-color: white;
             display: block;
         }
-        
+
         .talent-number::before {
             margin-right: 20px;
         }
-        
+
         .talent-number::after {
             margin-left: 20px;
         }
-        
+
         .talent-title {
             font-size: 40px;
             margin-bottom: 60px;
@@ -177,17 +177,17 @@
             max-width: 800px;
             padding: 0 20px;
         }
-        
+
         .talent-title .highlight {
             color: #ff3030;
         }
-        
+
         .talent-list {
             width: 100%;
             padding: 0 20px;
             margin-bottom: 20px;
         }
-        
+
         .talent-list a {
             color: white;
             text-decoration: none;
@@ -195,12 +195,12 @@
             margin-right: 20px;
             position: relative;
         }
-        
+
         .talent-list a::after {
             content: ">";
             margin-left: 5px;
         }
-        
+
         .talent-profile {
             width: 100%;
             padding: 50px 0;
@@ -208,7 +208,7 @@
             flex-direction: column;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .profile-container {
             display: flex;
             width: 100%;
@@ -216,149 +216,149 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         @media (max-width: 768px) {
             .profile-container {
                 flex-direction: column;
             }
-            
+
             .profile-image {
                 width: 100%;
                 max-width: 300px;
                 margin: 0 auto 30px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .talent-number {
                 font-size: 80px;
                 margin-bottom: 30px;
             }
-            
+
             .talent-number::before,
             .talent-number::after {
                 width: 40px;
             }
-            
+
             .talent-title {
                 font-size: 28px;
                 margin-bottom: 40px;
             }
-            
+
             .talent-list {
                 display: flex;
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .talent-list a {
                 margin-right: 0;
                 font-size: 16px;
             }
-            
+
             .profile-name {
                 font-size: 20px;
                 text-align: center;
             }
-            
+
             .profile-bio {
                 font-size: 15px;
                 text-align: center;
             }
-            
+
             .carousel-container {
                 height: 250px;
             }
-            
+
             .carousel-controls {
                 bottom: 10px;
             }
-            
-            .carousel-prev, 
+
+            .carousel-prev,
             .carousel-next {
                 width: 30px;
                 height: 30px;
             }
-            
+
             .carousel-title {
                 font-size: 20px;
                 margin-bottom: 10px;
             }
-            
+
             .talent-profile {
                 padding: 30px 0;
             }
-            
+
             .project-carousel {
                 margin: 30px 0;
             }
-            
+
             .header {
                 padding: 20px;
             }
-            
+
             .logo {
                 font-size: 20px;
             }
-            
+
             .menu-links a {
                 font-size: 24px;
             }
-            
+
             .profile-image {
                 height: 300px;
             }
         }
-        
+
         .profile-image {
             width: 300px;
             height: 400px;
             margin-right: 50px;
         }
-        
+
         .profile-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .profile-info {
             flex: 1;
         }
-        
+
         .profile-name {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
-        
+
         .profile-bio {
             font-size: 16px;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 30px;
         }
-        
+
         .project-carousel {
             width: 100%;
             margin: 50px 0;
             position: relative;
         }
-        
+
         .carousel-title {
             font-size: 28px;
             margin-bottom: 20px;
             text-align: center;
         }
-        
+
         .carousel-container {
             position: relative;
             width: 100%;
             height: 500px;
             overflow: hidden;
         }
-        
+
         .carousel-slide {
             position: absolute;
             width: 100%;
@@ -369,30 +369,30 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .carousel-slide.active {
             opacity: 1;
         }
-        
+
         .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .carousel-controls {
             position: absolute;
             bottom: 20px;
             left: 0;
             top: 50%;
-     
+
             width: 100%;
             display: flex;
             justify-content: space-between;
             padding: 0 20px;
             z-index: 10;
         }
-        
+
         .carousel-prev,
         .carousel-next {
             width: 40px;
@@ -406,7 +406,7 @@
             align-items: center;
             font-size: 20px;
         }
-        
+
         .play-video {
             position: absolute;
             top: 50%;
@@ -424,7 +424,7 @@
             align-items: center;
             z-index: 5;
         }
-        
+
         .play-video::before {
             content: '';
             width: 0;
@@ -434,7 +434,7 @@
             border-left: 25px solid white;
             margin-left: 5px;
         }
-        
+
         .play-label {
             position: absolute;
             bottom: 20px;
@@ -443,7 +443,7 @@
             font-size: 16px;
             z-index: 5;
         }
-        
+
         .footer {
             padding: 20px;
             text-align: center;
@@ -451,7 +451,7 @@
             color: rgba(255, 255, 255, 0.6);
             background-color: #000;
         }
-        
+
         .footer a {
             color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
@@ -467,7 +467,7 @@
             <span></span>
         </div>
     </div>
-    
+
     <!-- 全屏菜单 -->
     <div class="fullscreen-menu">
         <div class="menu-close">×</div>
@@ -479,16 +479,16 @@
             <a href="contact-us.html">Contact Us</a>
         </div>
     </div>
-    
+
     <div class="main-content">
         <div class="talent-number">02</div>
         <h1 class="talent-title"><span class="highlight">Our Creative Talent.</span> Click here to add your own text and edit me.</h1>
-        
+
         <div class="talent-list">
             <a href="#stefani">Stefani Longshamp</a>
             <a href="#max">Max Reinert</a>
         </div>
-        
+
         <!-- Stefani 部分 -->
         <div id="stefani" class="talent-profile">
             <div class="profile-container">
@@ -500,7 +500,7 @@
                     <p class="profile-bio">I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click "Edit Text" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.</p>
                 </div>
             </div>
-            
+
             <div class="project-carousel">
                 <div class="carousel-container">
                     <div class="carousel-slide active">
@@ -517,10 +517,10 @@
                     <button class="carousel-prev">&lt;</button><h3 class="carousel-title">Project 06</h3>
                     <button class="carousel-next">&gt;</button>
                 </div>
-                
+
             </div>
         </div>
-        
+
         <!-- Max 部分 -->
         <div id="max" class="talent-profile">
             <div class="profile-container">
@@ -532,7 +532,7 @@
                     <p class="profile-bio">I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click "Edit Text" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.</p>
                 </div>
             </div>
-            
+
             <div class="project-carousel">
                 <div class="carousel-container">
                     <div class="carousel-slide active">
@@ -549,40 +549,40 @@
                     <button class="carousel-prev">&lt;</button><h3 class="carousel-title">Project 06</h3>
                     <button class="carousel-next">&gt;</button>
                 </div>
-                
+
             </div>
         </div>
     </div>
-    
+
     <div class="footer">
         <p>© 2035 by Major. Powered and secured by <a href="#">Wix</a></p>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 全屏菜单逻辑
             const menuIcon = document.querySelector('.menu-icon');
             const menuClose = document.querySelector('.menu-close');
             const fullscreenMenu = document.querySelector('.fullscreen-menu');
-            
+
             menuIcon.addEventListener('click', function() {
                 fullscreenMenu.classList.add('active');
             });
-            
+
             menuClose.addEventListener('click', function() {
                 fullscreenMenu.classList.remove('active');
             });
-            
+
             // 轮播图逻辑
             const carousels = document.querySelectorAll('.project-carousel');
-            
+
             carousels.forEach(function(carousel) {
                 const slides = carousel.querySelectorAll('.carousel-slide');
                 const prevBtn = carousel.querySelector('.carousel-prev');
                 const nextBtn = carousel.querySelector('.carousel-next');
                 const title = carousel.querySelector('.carousel-title');
                 let currentIndex = 0;
-                
+
                 function updateSlides() {
                     slides.forEach((slide, index) => {
                         if (index === currentIndex) {
@@ -591,23 +591,23 @@
                             slide.classList.remove('active');
                         }
                     });
-                    
+
                     // 更新标题（如果需要）
                     if (carousel.id === 'stefani-carousel') {
                         title.textContent = `Project ${String(currentIndex + 1).padStart(2, '0')}`;
                     }
                 }
-                
+
                 prevBtn.addEventListener('click', function() {
                     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
                     updateSlides();
                 });
-                
+
                 nextBtn.addEventListener('click', function() {
                     currentIndex = (currentIndex + 1) % slides.length;
                     updateSlides();
                 });
-                
+
                 // 初始化
                 updateSlides();
             });
