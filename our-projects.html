@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -375,12 +375,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 1100;
             display: flex;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            flex-direction: column;
         }
 
         .video-modal.active {
@@ -396,45 +397,65 @@
             font-size: 30px;
             cursor: pointer;
             z-index: 1101;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .video-modal-close:hover {
+            color: #ff3030;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .video-share-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1101;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-share-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .video-share-btn svg {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
         }
 
         .video-container {
-            flex: 3;
-            height: 100%;
+            flex: 1;
             position: relative;
-            background-color: #000;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1200px;
+            height: 70vh;
+            margin-top: 80px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .video-container video {
+        .video-container iframe {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .video-info {
-            flex: 1;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .video-title {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .video-timer {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 30px;
-        }
-
-        .video-description {
-            font-size: 14px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
+            border: none;
         }
 
         .video-overlay {
@@ -448,164 +469,133 @@
             justify-content: center;
             align-items: center;
             pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.3));
         }
 
         .video-overlay-location {
-            font-size: 24px;
+            font-size: 18px;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
         }
 
         .video-overlay-title {
-            font-size: 80px;
+            font-size: 60px;
             font-weight: bold;
             font-style: italic;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 0 20px;
         }
 
-        .video-share-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
+        .video-info {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto 50px;
             color: white;
-            font-size: 14px;
-            cursor: pointer;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
         }
 
-        .video-share-btn svg {
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
+        .video-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff3030;
+        }
+
+        .video-timer {
+            display: inline-block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .video-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
         }
 
         @media (max-width: 1024px) {
-            .video-modal {
-                flex-direction: column;
-            }
-
             .video-container {
-                height: 60%;
+                height: 50vh;
             }
 
-            .video-info {
-                height: 40%;
-                padding: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .video-overlay-title {
+                font-size: 40px;
             }
         }
 
         @media (max-width: 768px) {
-            .project-number {
-                font-size: 80px;
-                margin-bottom: 30px;
+            .video-container {
+                width: 95%;
+                height: 40vh;
+                margin-top: 60px;
             }
 
-            .project-number::before,
-            .project-number::after {
-                width: 50px;
+            .video-info {
+                width: 95%;
+                margin: 20px auto 30px;
             }
 
-            .project-title {
-                font-size: 28px;
-                margin-bottom: 40px;
-            }
-
-            .project-item {
-                height: 250px;
-            }
-
-            .project-name {
-                font-size: 22px;
-            }
-
-            .project-id {
-                font-size: 18px;
-            }
-
-            .project-modal-title {
-                font-size: 40px;
+            .video-title {
+                font-size: 24px;
             }
 
             .video-overlay-title {
-                font-size: 50px;
+                font-size: 30px;
             }
 
-            .menu-links a {
-                font-size: 30px;
+            .video-overlay-location {
+                font-size: 14px;
             }
         }
 
         @media (max-width: 480px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .video-container {
+                height: 30vh;
+                margin-top: 50px;
             }
 
-            .project-number {
-                font-size: 60px;
-            }
-
-            .project-number::before,
-            .project-number::after {
-                width: 30px;
-            }
-
-            .project-title {
-                font-size: 24px;
-                margin-bottom: 30px;
-            }
-
-            .project-item {
-                height: 220px;
-            }
-
-            .project-modal-title {
-                font-size: 32px;
-            }
-
-            .project-overlay-title {
-                font-size: 36px;
-            }
-
-            .header {
-                padding: 20px;
-            }
-
-            .logo {
-                font-size: 20px;
-            }
-
-            .menu-links a {
-                font-size: 24px;
-                gap: 20px;
-            }
-
-            .project-modal-content {
-                padding: 80px 20px 40px;
-            }
-
-            .project-info-header {
-                padding: 0;
-                margin-bottom: 30px;
+            .video-modal-close,
+            .video-share-btn {
+                top: 10px;
             }
 
             .video-modal-close {
-                top: 10px;
                 right: 10px;
             }
 
             .video-share-btn {
-                top: 10px;
                 left: 10px;
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .video-overlay-title {
+                font-size: 24px;
             }
 
             .video-overlay-location {
-                font-size: 16px;
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            .video-title {
+                font-size: 20px;
+            }
+
+            .video-description {
+                font-size: 14px;
             }
         }
     </style>
@@ -613,7 +603,7 @@
 
 <body>
     <div class="header">
-        <div class="logo"><a href="index.html">SWEET CODE,Inc.</CODE></a></div>
+        <div class="logo"><a href="index.html">SWEET CODE, Inc.</CODE></a></div>
         <div class="menu-icon">
             <span></span>
             <span></span>
@@ -651,7 +641,7 @@
                 <div class="project-overlay-content">
                     <h3 class="project-overlay-title">Project 01</h3>
                     <div class="play-video-btn">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="https://youtu.be/8DVZDhRs-jU">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 5V19L19 12L8 5Z" fill="white" />
                         </svg>
                     </div>
@@ -665,7 +655,7 @@
     <div class="video-modal" id="video-modal">
         <div class="video-modal-close">×</div>
         <div class="video-share-btn">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="https://youtu.be/8DVZDhRs-jU">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 5.12548 15.0077 5.24917 15.0227 5.37069L8.08261 9.12159C7.54308 8.43452 6.7862 8 5.93375 8C4.32616 8 3 9.34315 3 11C3 12.6569 4.32616 14 5.93375 14C6.86993 14 7.70173 13.4882 8.22121 12.7123L14.8312 16.3851C14.7852 16.5822 14.7606 16.7872 14.7606 17C14.7606 18.6569 16.0868 20 17.6944 20C19.302 20 20.6281 18.6569 20.6281 17C20.6281 15.3431 19.302 14 17.6944 14C16.8247 14 16.0457 14.4132 15.5483 15.0679L8.96728 11.4172C9.00399 11.2812 9.02286 11.1414 9.02286 11C9.02286 10.791 8.98379 10.5891 8.91263 10.3988L15.8182 6.66608C16.3547 7.45192 17.1334 8 18 8Z"
                     fill="white" />
@@ -673,27 +663,21 @@
             Share
         </div>
 
-        <div class="video-container">
-           <!--deo id="project-video" controls>
-                <source src="" type="video/mp4">
-                您的浏览器不支持视频播放。
-            </video>-->
-            <iframe width="100%" height="315"
-            src="https://www.youtube.com/embed/8DVZDhRs-jU"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-          
+        <div id="video-container" class="video-container">
+            <iframe
+                id="video-iframe"
+                src="#"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
 
             <div class="video-overlay">
                 <div class="video-overlay-location">CALIFORNIA</div>
                 <div class="video-overlay-title">Dreaming</div>
             </div>
         </div>
-
-
 
         <div class="video-info">
             <h2 class="video-title">Project 02</h2>
@@ -711,7 +695,7 @@
             未来を創る、映像の力。</h1>
 
         <div class="projects-grid">
-            <div class="project-item">
+            <div class="project-item" data-video-url="https://www.youtube.com/embed/8DVZDhRs-jU">
                 <img src="./assets/project1.png" alt="モバイルゲームWebCM">
                 <div class="project-info">
                     <div class="project-name">モバイルゲームWebCM</div>
@@ -719,7 +703,7 @@
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
-            <div class="project-item">
+            <div class="project-item" data-video-url="https://www.youtube.com/embed/8DVZDhRs-jU">
                 <img src="./assets/project2.png" alt="モバイルゲームWebCM">
                 <div class="project-info">
                     <div class="project-name">モバイルゲームWebCM</div>
@@ -727,7 +711,7 @@
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
-            <div class="project-item">
+            <div class="project-item" data-video-url="https://www.youtube.com/embed/8DVZDhRs-jU">
                 <img src="./assets/project3.png" alt="短編映画「エマージェンス」">
                 <div class="project-info">
                     <div class="project-name">短編映画「エマージェンス」</div>
@@ -735,7 +719,7 @@
                     <a href="#" class="view-link">VIEW ></a>
                 </div>
             </div>
-            <div class="project-item">
+            <div class="project-item" data-video-url="https://www.youtube.com/embed/8DVZDhRs-jU">
                 <img src="./assets/project4.png" alt="短編映画「野分き」">
                 <div class="project-info">
                     <div class="project-name">短編映画「野分き」</div>
@@ -789,6 +773,8 @@
             const modalProjectImage = document.getElementById('modal-project-image');
             const projectModalTitle = document.querySelector('.project-modal-title');
             const projectOverlayTitle = document.querySelector('.project-overlay-title');
+            const videoIframe = document.getElementById('video-iframe');
+            const playVideoBtn = document.querySelector('.play-video-btn');
 
             // 点击项目项打开模态框
             projectItems.forEach(function (item, index) {
@@ -803,6 +789,12 @@
                     const imgSrc = item.querySelector('img').src;
                     modalProjectImage.src = imgSrc;
 
+                    // 获取视频URL
+                    const videoUrl = item.getAttribute('data-video-url');
+                    if (videoUrl) {
+                        playVideoBtn.setAttribute('data-video-url', videoUrl);
+                    }
+
                     // 显示模态框
                     projectModal.classList.add('active');
                     document.body.style.overflow = 'hidden'; // 防止背景滚动
@@ -816,10 +808,9 @@
             });
 
             // 视频播放模态框逻辑
-            const playVideoBtn = document.querySelector('.play-video-btn');
             const videoModal = document.getElementById('video-modal');
             const videoModalClose = document.querySelector('.video-modal-close');
-            const projectVideo = document.getElementById('project-video');
+            const videoContainer = document.getElementById('video-container');
             const videoTitle = document.querySelector('.video-title');
 
             // 点击播放按钮打开视频模态框
@@ -830,23 +821,25 @@
                 const currentProject = projectModalTitle.textContent;
                 videoTitle.textContent = currentProject;
 
-                // 假设这里设置视频源，实际应用中应该根据项目ID获取对应视频
-                projectVideo.src = 'assets/project-video.mp4';
+                // 获取YouTube视频URL（如果有）
+                const videoUrl = this.getAttribute('data-video-url');
+                if (videoUrl) {
+                    // 直接设置iframe的src
+                    videoIframe.src = videoUrl;
+                }
 
                 // 显示视频模态框
                 videoModal.classList.add('active');
-
-                // 播放视频
-                projectVideo.load();
-                projectVideo.play();
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
             });
 
             // 关闭视频模态框
             videoModalClose.addEventListener('click', function () {
                 videoModal.classList.remove('active');
+                document.body.style.overflow = ''; // 恢复滚动
 
-                // 暂停视频
-                projectVideo.pause();
+                // 停止视频播放（通过重置iframe的src）
+                videoIframe.src = '#';
             });
         });
     </script>

@@ -1,0 +1,4 @@
+{
+  "disableLanguages": ["html"],
+  "requirePragma": true
+}
