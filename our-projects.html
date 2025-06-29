@@ -55,7 +55,7 @@
             background-color: #ff3030;
         }
 
-        /* 全屏菜单样式 */
+        /* Full-screen menu styles */
         .fullscreen-menu {
             position: fixed;
             top: 0;
@@ -251,7 +251,7 @@
             text-decoration: none;
         }
 
-        /* 项目详情模态框样式 */
+        /* Project details modal styles */
         .project-modal {
             position: fixed;
             top: 0;
@@ -368,7 +368,7 @@
             font-size: 14px;
         }
 
-        /* 视频播放模态框样式 */
+        /* Video playback modal styles */
         .video-modal {
             position: fixed;
             top: 0;
@@ -611,7 +611,7 @@
         </div>
     </div>
 
-    <!-- 全屏菜单 -->
+    <!-- Full-screen menu -->
     <div class="fullscreen-menu">
         <div class="menu-close">×</div>
         <div class="menu-links">
@@ -623,7 +623,7 @@
         </div>
     </div>
 
-    <!-- 项目详情模态框 -->
+    <!-- Project details modal -->
     <div class="project-modal" id="project-modal">
         <div class="project-modal-close">×</div>
         <div class="project-modal-content">
@@ -651,7 +651,7 @@
         </div>
     </div>
 
-    <!-- 视频播放模态框 -->
+    <!-- Video playback modal -->
     <div class="video-modal" id="video-modal">
         <div class="video-modal-close">×</div>
         <div class="video-share-btn">
@@ -753,7 +753,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 全屏菜单逻辑
+            // Full-screen menu logic
             const menuIcon = document.querySelector('.menu-icon');
             const menuClose = document.querySelector('.menu-close');
             const fullscreenMenu = document.querySelector('.fullscreen-menu');
@@ -766,7 +766,7 @@
                 fullscreenMenu.classList.remove('active');
             });
 
-            // 项目详情模态框逻辑
+            // Project details modal logic
             const projectItems = document.querySelectorAll('.project-item');
             const projectModal = document.getElementById('project-modal');
             const projectModalClose = document.querySelector('.project-modal-close');
@@ -776,69 +776,69 @@
             const videoIframe = document.getElementById('video-iframe');
             const playVideoBtn = document.querySelector('.play-video-btn');
 
-            // 点击项目项打开模态框
+            // Open modal when clicking on a project item
             projectItems.forEach(function (item, index) {
                 item.addEventListener('click', function () {
                     const projectId = String(index + 1).padStart(2, '0');
 
-                    // 更新模态框内容
+                    // Update modal content
                     projectModalTitle.textContent = `Project ${projectId}`;
                     projectOverlayTitle.textContent = `Project ${projectId}`;
 
-                    // 更新图片
+                    // Update image
                     const imgSrc = item.querySelector('img').src;
                     modalProjectImage.src = imgSrc;
 
-                    // 获取视频URL
+                    // Get video URL
                     const videoUrl = item.getAttribute('data-video-url');
                     if (videoUrl) {
                         playVideoBtn.setAttribute('data-video-url', videoUrl);
                     }
 
-                    // 显示模态框
+                    // Show modal
                     projectModal.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 });
             });
 
-            // 关闭模态框
+            // Close modal
             projectModalClose.addEventListener('click', function () {
                 projectModal.classList.remove('active');
-                document.body.style.overflow = ''; // 恢复滚动
+                document.body.style.overflow = ''; // Restore scrolling
             });
 
-            // 视频播放模态框逻辑
+            // Video playback modal logic
             const videoModal = document.getElementById('video-modal');
             const videoModalClose = document.querySelector('.video-modal-close');
             const videoContainer = document.getElementById('video-container');
             const videoTitle = document.querySelector('.video-title');
 
-            // 点击播放按钮打开视频模态框
+            // Open video modal when clicking play button
             playVideoBtn.addEventListener('click', function (e) {
-                e.stopPropagation(); // 阻止事件冒泡
+                e.stopPropagation(); // Prevent event bubbling
 
-                // 更新视频标题
+                // Update video title
                 const currentProject = projectModalTitle.textContent;
                 videoTitle.textContent = currentProject;
 
-                // 获取YouTube视频URL（如果有）
+                // Get YouTube video URL (if exists)
                 const videoUrl = this.getAttribute('data-video-url');
                 if (videoUrl) {
-                    // 直接设置iframe的src
+                    // Directly set iframe src
                     videoIframe.src = videoUrl;
                 }
 
-                // 显示视频模态框
+                // Show video modal
                 videoModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // 防止背景滚动
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
             });
 
-            // 关闭视频模态框
+                            // Close video modal
             videoModalClose.addEventListener('click', function () {
                 videoModal.classList.remove('active');
-                document.body.style.overflow = ''; // 恢复滚动
+                document.body.style.overflow = ''; // Restore scrolling
 
-                // 停止视频播放（通过重置iframe的src）
+                // Stop video playback (by resetting iframe src)
                 videoIframe.src = '#';
             });
         });
